@@ -1,30 +1,24 @@
-class Usuario {
-    constructor(email, senha) {
-        this.user = [];
-        this.user.email = email;
-        this.user.senha = senha;
-    }
+const usuarios = [
+    { nome: 'Diego', idade: 23, empresa: 'Rocketseat' },
+    { nome: 'Diego', idade: 26, empresa: 'Rocketseat' },
+    { nome: 'Gabriel', idade: 15, empresa: 'Rocketseat' },
+    { nome: 'Lucas', idade: 30, empresa: 'Facebook' },
+];
 
-    isAdmin(){
-        const admin = this.user.admin ? true : false;
-        return admin;
-    }
-}
+const ages = [];
+usuarios.map(user => ages.push(user.idade));
+console.log(ages);
 
-class Admin extends Usuario {
-    constructor(){
-        super();
-        this.user.admin = true;
-    }
-}
+const filtering = usuarios.filter(user => user.idade > 18 && user.empresa === 'Rocketseat');
+console.log(filtering);
 
-const User1 = new Usuario('email@teste.com', 'senha123');
-const User2 = new Usuario('thais@teste.com', 'senha123');
-const Adm1 = new Admin('email@teste.com', 'senha123');
-const Adm2 = new Admin('email@teste.com', 'senha123');
+const filter = usuarios.filter(function(item){
+    return item.idade > 18 && item.empresa === 'Rocketseat'; // operacao de módulo
+});
+console.log(filter);
 
-console.log(User1.isAdmin()) // false
-console.log(Adm1.isAdmin()) // true
-console.log(User2.isAdmin()); // false
+const google = usuarios.find(user => user.empresa === 'Google');
+console.log(google);
 
-console.log(Adm2.isAdmin()) // true
+const operations = usuarios.map(user => ({ ...user, idade:user.idade * 2 })).filter(user => user.idade > 50);
+console.log(operations);
